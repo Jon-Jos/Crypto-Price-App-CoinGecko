@@ -1,1 +1,1 @@
-# Crypto-Price-App-CoinGecko
+# CryptoPulse
