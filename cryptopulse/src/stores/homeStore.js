@@ -1,4 +1,5 @@
 import axios from 'axios'
+import debounce from '../helpers/debounce'
 import { create } from 'zustand' // copied from  https://github.com/pmndrs/zustand
 
 const homeStore = create((set) => ({
@@ -10,11 +11,11 @@ const homeStore = create((set) => ({
         homeStore.getState().searchCoins()
     },
 
-    searchCoins: async () => {
+    searchCoins: debounce(async () => {
         const { query } = homeStore.getState();
         const res = await axios.get(`https://api.coingecko.com/api/v3/search?query=${query}`)
-        console.log(res)
-    },
+        console.log(res.data)
+    }, 500), // It wait 500 ms to search
     fetchCoins: async () => {
         // the below is a promise so async await is used!
         const res = await axios.get('https://api.coingecko.com/api/v3/search/trending')     // link source: https://www.coingecko.com/api/documentation
