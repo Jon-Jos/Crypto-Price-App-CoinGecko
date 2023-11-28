@@ -46,3 +46,9 @@
 .boxes img {
     margin: 50px 50px;
 }
+
+.title img {
+    padding-left: 20px;
+    padding-top: 20px;
+    height: 60px;
+}
